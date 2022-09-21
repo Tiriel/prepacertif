@@ -12,6 +12,12 @@ class PostCrudController extends AbstractCrudController
         return Post::class;
     }
 
+    public function createEntity(string $entityFqcn): Post
+    {
+        return (new Post())->setCreatedBy($this->getUser());
+    }
+
+
     /*
     public function configureFields(string $pageName): iterable
     {
