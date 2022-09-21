@@ -10,10 +10,21 @@ services:
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-!ChangeMe!}
       POSTGRES_USER: ${POSTGRES_USER:-app}
     volumes:
-      - db-data:/var/lib/postgresql/data:rw
+#      - db-data:/var/lib/postgresql/data:rw
       # You may use a bind-mounted host directory instead, so that it is harder to accidentally remove the volume and lose all your data!
-      # - ./docker/db/data:/var/lib/postgresql/data:rw
+      - ./docker/db/data:/var/lib/postgresql/data:rw
 ###< doctrine/doctrine-bundle ###
+
+  redis:
+    image: redis:5-alpine
+    ports:
+      - '6379'
+
+  rabbitmq:
+    image: rabbitmq:3.7-management
+    ports:
+      - '5672'
+      - '15672'
 
 volumes:
 ###> doctrine/doctrine-bundle ###
