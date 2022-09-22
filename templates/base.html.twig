@@ -23,5 +23,9 @@
         <main class="container">
         {% block body %}{% endblock %}
        </main>
+    <footer class="mt-5">
+        {% block footer %}{% endblock %}
+        {{ include('includes/_footer.html.twig') }}
+    </footer>
     </body>
 </html>
