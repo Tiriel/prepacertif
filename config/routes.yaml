@@ -4,6 +4,14 @@ app:
     defaults:
         _locale: en
 
+app_static_terms:
+    path: /{_locale}/terms
+    controller: Symfony\Bundle\FrameworkBundle\Controller\TemplateController
+    defaults:
+        template: static/terms.html.twig
+        maxAge: 86400
+        sharedAge: 86400
+
 controllers:
     resource: ../src/Controller/
     type: annotation

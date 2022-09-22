@@ -11,12 +11,10 @@
         <h1>Register</h1>
 
         {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.email) }}
-        {{ form_row(registrationForm.username) }}
-        {{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
-        }) }}
-        {{ form_row(registrationForm.agreeTerms) }}
+        {{ form_row(registrationForm.email, {label: 'Email'|trans}) }}
+        {{ form_row(registrationForm.username, {label: 'Username'|trans}) }}
+        {{ form_row(registrationForm.plainPassword, {label: 'Password'|trans}) }}
+        {{ form_row(registrationForm.agreeTerms, {label: 'I agree to the Terms and conditions'|trans}) }}
 
         <button type="submit" class="btn btn-primary">Register</button>
         {{ form_end(registrationForm) }}

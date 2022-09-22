@@ -89,6 +89,26 @@
         <source>View the entire article</source>
         <target>View the entire article</target>
       </trans-unit>
+      <trans-unit id="lpzL089" resname="Email">
+        <source>Email</source>
+        <target>Email</target>
+      </trans-unit>
+      <trans-unit id="9owTvZN" resname="I agree to the Terms and conditions">
+        <source>I agree to the Terms and conditions</source>
+        <target>I agree to the Terms and conditions</target>
+      </trans-unit>
+      <trans-unit id="jl4ZHeE" resname="Post Title">
+        <source>Post Title</source>
+        <target>Post Title</target>
+      </trans-unit>
+      <trans-unit id="R70pB1_" resname="Content">
+        <source>Content</source>
+        <target>Content</target>
+      </trans-unit>
+      <trans-unit id="KUc83Og" resname="Publication date">
+        <source>Publication date</source>
+        <target>Publication date</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
