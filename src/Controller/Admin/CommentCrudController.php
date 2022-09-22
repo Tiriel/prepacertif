@@ -12,6 +12,10 @@ class CommentCrudController extends AbstractCrudController
         return Comment::class;
     }
 
+    public function createEntity(string $entityFqcn)
+    {
+        return (new Comment())->setCreatedBy($this->getUser());
+    }
     /*
     public function configureFields(string $pageName): iterable
     {

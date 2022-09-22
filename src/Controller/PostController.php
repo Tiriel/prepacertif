@@ -2,13 +2,20 @@
 
 namespace App\Controller;
 
+use App\Entity\Comment;
 use App\Entity\Post;
+use App\Form\CommentType;
 use App\Form\PostType;
+use App\Repository\CommentRepository;
 use App\Repository\PostRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Messenger\MessageBusInterface;
+use Symfony\Component\Notifier\Notification\Notification;
+use Symfony\Component\Notifier\NotifierInterface;
 use Symfony\Component\Routing\Annotation\Route;
+use function Symfony\Component\Translation\t;
 
 #[Route('/post')]
 class PostController extends AbstractController
@@ -46,8 +53,24 @@ class PostController extends AbstractController
     }
 
     #[Route('/{id}', name: 'app_post_show', methods: ['GET'])]
-    public function show(Post $post): Response
+    public function show(Post $post, CommentRepository $commentRepository): Response
     {
+        $comment = (new Comment())
+            ->setCreatedBy($this->getUser())
+            ->setPost($post);
+        $commentForm = $this->createForm(CommentType::class, $comment);
+
+        if ($commentForm->isSubmitted()) {
+            if ($commentForm->isValid()) {
+                $comment->setCreatedAt(new \DateTimeImmutable());
+                $commentRepository->add($comment, true);
+                $this->addFlash('success', t('Thank you for your comment. It has been submitted and will be reviewed.'));
+
+                return $this->redirectToRoute('app_post_show', ['id' => $post->getId()]);
+            }
+            $this->addFlash('error', t('There seems to be some problems with your comment.'));
+        }
+
         return $this->render('post/show.html.twig', [
             'post' => $post,
         ]);
