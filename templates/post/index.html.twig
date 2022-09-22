@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Post index{% endblock %}
+
+{% block body %}
+    <h1>Post index</h1>
+
+    <h2 class="w-75 m-auto">{{ 'Blog posts'|trans }} :</h2>
+    {% if posts|length > 4 %}
+    <a href="{{ path('app_post_new') }}" class="float-end"><button class="btn btn-primary">Create new</button></a>
+    {% endif %}
+    <div class="list-group list-group-flush">
+        {% for post in posts %}
+            <a href="{{ path('app_post_show', {id: post.id}) }}" class="w-75 m-auto list-group-item list-group-item-action">
+                <article class="vstack gap-2 py-3">
+                    <div class="py-3">
+                        <h3 class="text-primary">{{ post.title }}</h3>
+                        <small class="text-muted">{{ 'Written by'|trans }}
+                            {{ post.createdBy.username }} {{ 'on'|trans }} {{ post.createdAt|format_datetime('full', 'none') }}</small>
+                    </div>
+                    <p>{{ post.summary }}</p>
+{#                    <span class="border-bottom border-light"></span>#}
+{#                    <p>{{ post.text|raw }}</p>#}
+                    <span class="link-secondary">{{ 'View the entier article'|trans }}</span>
+                </article>
+            </a>
+        {% else %}
+            <p>{{ 'No posts yet'|trans }}...</p>
+        {% endfor %}
+    </div>
+    <a href="{{ path('app_post_new') }}"><button class="btn btn-primary">Create new</button></a>
+
+{% endblock %}

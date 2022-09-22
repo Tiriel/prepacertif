@@ -1,20 +1,30 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Hello DefaultController!{% endblock %}
+{% block header %}
+    <h1 class="mb-5">{{ 'PrepaCertif Blog'|trans }}</h1>
+{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/home/benjamin/Dev/prepacertif/src/Controller/DefaultController.php'|file_link(0) }}">src/Controller/DefaultController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/home/benjamin/Dev/prepacertif/templates/default/index.html.twig'|file_link(0) }}">templates/default/index.html.twig</a></code></li>
-    </ul>
-</div>
+    <section>
+        <a class="link-secondary float-end" href="{{ path('app_post_index') }}">{{ 'See all posts'|trans }}</a>
+        <h3 class="w-75 m-auto">{{ 'Last posts'|trans }} :</h3>
+        <div class="list-group list-group-flush">
+            {% for post in posts %}
+               <a href="{{ path('app_post_show', {id: post.id}) }}" class="w-75 m-auto list-group-item list-group-item-action">
+                <article class="py-3">
+                    <div class="py-3">
+                        <h3 class="text-primary">{{ post.title }}</h3>
+                        <small class="text-muted">{{ 'Written by'|trans }}
+                            {{ post.createdBy.username }} {{ 'on'|trans }} {{ post.createdAt|format_datetime('full', 'none') }}</small>
+                    </div>
+                    <p>{{ post.summary }}</p>
+                    <span class="link-secondary">{{ 'View the entier article'|trans }}</span>
+                </article>
+                  </a>
+            {% else %}
+                <p>{{ 'No posts yet'|trans }}...</p>
+            {% endfor %}
+        </div>
+    </section>
 {% endblock %}

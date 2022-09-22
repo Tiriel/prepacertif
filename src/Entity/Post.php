@@ -7,8 +7,10 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use function Symfony\Component\String\u;
 
 #[ORM\Entity(repositoryClass: PostRepository::class)]
+#[ORM\HasLifecycleCallbacks]
 class Post
 {
     #[ORM\Id]
@@ -38,6 +40,9 @@ class Post
     #[ORM\JoinColumn(nullable: false)]
     private ?User $createdBy = null;
 
+    #[ORM\Column(nullable: true)]
+    private ?\DateTimeImmutable $publicationDate = null;
+
     public function __construct()
     {
         $this->comments = new ArrayCollection();
@@ -65,9 +70,11 @@ class Post
         return $this->summary;
     }
 
-    public function setSummary(string $summary): self
+    #[ORM\PrePersist]
+    #[ORM\PreUpdate]
+    public function setSummary(): self
     {
-        $this->summary = $summary;
+        $this->summary = u($this->getText())->truncate(200, '...', false);
 
         return $this;
     }
@@ -146,6 +153,18 @@ class Post
     public function setCreatedBy(?User $createdBy): self
     {
         $this->createdBy = $createdBy;
+
+        return $this;
+    }
+
+    public function getPublicationDate(): ?\DateTimeImmutable
+    {
+        return $this->publicationDate;
+    }
+
+    public function setPublicationDate(?\DateTimeImmutable $publicationDate): self
+    {
+        $this->publicationDate = $publicationDate;
 
         return $this;
     }

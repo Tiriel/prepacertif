@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Post{% endblock %}
+
+{% block body %}
+    <article class="vstack gap-2 py-3">
+        <div class="py-3">
+            <h1 class="text-primary">{{ post.title }}</h1>
+            <span class="text-muted">{{ 'Written by'|trans }}
+                {{ post.createdBy.username }} {{ 'on'|trans }} {{ post.createdAt|format_datetime('full', 'none') }}</span>
+        </div>
+        <span class="border-bottom border-light"></span>
+        <p class="fs-5">{{ post.text|nl2br|raw }}</p>
+    </article>
+
+    <a href="{{ path('app_post_index') }}"><button class="btn btn-primary">{{ 'Back to list'|trans }}</button></a>
+
+    {% if app.user == post.createdBy or is_granted('ROLE_ADMIN') %}
+        <div class="hstack gap-2 my-2 float-end">
+            <a href="{{ path('app_post_edit', {'id': post.id}) }}">
+                <button class="btn btn-warning">{{ 'Edit'|trans }}</button>
+            </a>
+            {{ include('post/_delete_form.html.twig') }}
+        </div>
+    {% endif %}
+{% endblock %}
