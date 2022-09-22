@@ -8,9 +8,9 @@
     {% if posts|length > 4 %}
     <a href="{{ path('app_post_new') }}" class="float-end"><button class="btn btn-primary">Create new</button></a>
     {% endif %}
-    <div class="list-group list-group-flush">
+    <div class="w-75 m-auto list-group list-group-flush">
         {% for post in posts %}
-            <a href="{{ path('app_post_show', {id: post.id}) }}" class="w-75 m-auto list-group-item list-group-item-action">
+            <a href="{{ path('app_post_show', {id: post.id}) }}" class="list-group-item list-group-item-action">
                 <article class="vstack gap-2 py-3">
                     <div class="py-3">
                         <h3 class="text-primary">{{ post.title }}</h3>
@@ -26,7 +26,7 @@
         {% else %}
             <p>{{ 'No posts yet'|trans }}...</p>
         {% endfor %}
+        <a href="{{ path('app_post_new') }}"><button class="btn btn-primary">Create new</button></a>
     </div>
-    <a href="{{ path('app_post_new') }}"><button class="btn btn-primary">Create new</button></a>
 
 {% endblock %}
