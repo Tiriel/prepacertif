@@ -18,14 +18,20 @@ class PostType extends AbstractType
             ->add('publicationDate', DateType::class, [
                 'input' => 'datetime_immutable',
                 'widget' => 'single_text',
-            ])
-        ;
+            ]);
+
+        if (array_key_exists('edit', $options) && $options['edit'] === true) {
+            $builder->get('publicationDate')->setDisabled(true);
+        }
     }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
-        $resolver->setDefaults([
-            'data_class' => Post::class,
-        ]);
+        $resolver
+            ->setDefaults([
+                'data_class' => Post::class,
+                'edit' => false,
+            ])
+            ->addAllowedTypes('edit', 'bool');
     }
 }

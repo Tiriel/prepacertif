@@ -3,9 +3,8 @@
 {% block title %}Post index{% endblock %}
 
 {% block body %}
-    <h1>Post index</h1>
+    <h2 class="display-1 w-75 m-auto mb-5">{{ 'All posts'|trans }}</h2>
 
-    <h2 class="w-75 m-auto">{{ 'Blog posts'|trans }} :</h2>
     {% if posts|length > 4 %}
     <a href="{{ path('app_post_new') }}" class="float-end"><button class="btn btn-primary">Create new</button></a>
     {% endif %}
@@ -21,7 +20,7 @@
                     <p>{{ post.summary }}</p>
 {#                    <span class="border-bottom border-light"></span>#}
 {#                    <p>{{ post.text|raw }}</p>#}
-                    <span class="link-secondary">{{ 'View the entier article'|trans }}</span>
+                    <span class="link-secondary">{{ 'View the entire article'|trans }}</span>
                 </article>
             </a>
         {% else %}

@@ -20,3 +20,7 @@ tests:
 	symfony console doctrine:fixtures:load -n -e test
 	symfony php bin/phpunit $@
 .PHONY: tests
+
+trans:
+	symfony console translation:extract en --domain=messages --force
+	symfony console translation:extract fr --domain=messages --force

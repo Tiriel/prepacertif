@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="en" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="4tClSWj" resname="Delete">
+        <source>Delete</source>
+        <target>Delete</target>
+      </trans-unit>
+      <trans-unit id="Xaj3_8K" resname="Back to list">
+        <source>Back to list</source>
+        <target>Back to list</target>
+      </trans-unit>
+      <trans-unit id="1a6ou3H" resname="Written by">
+        <source>Written by</source>
+        <target>Written by</target>
+      </trans-unit>
+      <trans-unit id="uNMehSc" resname="on">
+        <source>on</source>
+        <target>on</target>
+      </trans-unit>
+      <trans-unit id="RkxP.QG" resname="Edit">
+        <source>Edit</source>
+        <target>Edit</target>
+      </trans-unit>
+      <trans-unit id="Oi5cLDS" resname="All posts">
+        <source>All posts</source>
+        <target>All posts</target>
+      </trans-unit>
+      <trans-unit id="8r1ncJX" resname="No posts yet">
+        <source>No posts yet</source>
+        <target>No posts yet</target>
+      </trans-unit>
+      <trans-unit id="E48mw5O" resname="PrepaCertif Blog">
+        <source>PrepaCertif Blog</source>
+        <target>PrepaCertif Blog</target>
+      </trans-unit>
+      <trans-unit id="1YUg_VI" resname="My test blog">
+        <source>My test blog</source>
+        <target>My test blog</target>
+      </trans-unit>
+      <trans-unit id="K_2Z3pE" resname="Small description">
+        <source>Small description</source>
+        <target>Small description</target>
+      </trans-unit>
+      <trans-unit id="pnqCs3a" resname="See all posts">
+        <source>See all posts</source>
+        <target>See all posts</target>
+      </trans-unit>
+      <trans-unit id="UV8KQw8" resname="Last posts">
+        <source>Last posts</source>
+        <target>Last posts</target>
+      </trans-unit>
+      <trans-unit id="yKeA0.P" resname="Log in!">
+        <source>Log in!</source>
+        <target>Log in!</target>
+      </trans-unit>
+      <trans-unit id="acVpEs4" resname="You are logged in as">
+        <source>You are logged in as</source>
+        <target>You are logged in as</target>
+      </trans-unit>
+      <trans-unit id="0FJ_Sz1" resname="Logout">
+        <source>Logout</source>
+        <target>Logout</target>
+      </trans-unit>
+      <trans-unit id="dDUw20Q" resname="Please sign in">
+        <source>Please sign in</source>
+        <target>Please sign in</target>
+      </trans-unit>
+      <trans-unit id="47ienTP" resname="Username">
+        <source>Username</source>
+        <target>Username</target>
+      </trans-unit>
+      <trans-unit id="588_9PF" resname="Password">
+        <source>Password</source>
+        <target>Password</target>
+      </trans-unit>
+      <trans-unit id="_TJnqhH" resname="Remember me">
+        <source>Remember me</source>
+        <target>Remember me</target>
+      </trans-unit>
+      <trans-unit id="v9QCsvb" resname="Sign in">
+        <source>Sign in</source>
+        <target>Sign in</target>
+      </trans-unit>
+      <trans-unit id="At9iqIT" resname="View the entire article">
+        <source>View the entire article</source>
+        <target>View the entire article</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

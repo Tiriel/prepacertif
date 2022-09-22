@@ -2,7 +2,17 @@
 
 {% block title %}Hello DefaultController!{% endblock %}
 {% block header %}
-    <h1 class="mb-5">{{ 'PrepaCertif Blog'|trans }}</h1>
+    <section class="mb-5 p-5 bg-light">
+        <div class="w-75 mx-auto">
+            <h1 class="display-1 lh-1">{{ 'PrepaCertif Blog'|trans }}</h1>
+            <small class="text-muted fs-4">{{ 'My test blog'|trans }}</small>
+        </div>
+    </section>
+    <article class="w-50 mx-auto mt-5">
+        <p class="lead">
+            {{ 'Small description'|trans }}
+        </p>
+    </article>
 {% endblock %}
 
 {% block body %}
@@ -11,17 +21,18 @@
         <h3 class="w-75 m-auto">{{ 'Last posts'|trans }} :</h3>
         <div class="list-group list-group-flush">
             {% for post in posts %}
-               <a href="{{ path('app_post_show', {id: post.id}) }}" class="w-75 m-auto list-group-item list-group-item-action">
-                <article class="py-3">
-                    <div class="py-3">
-                        <h3 class="text-primary">{{ post.title }}</h3>
-                        <small class="text-muted">{{ 'Written by'|trans }}
-                            {{ post.createdBy.username }} {{ 'on'|trans }} {{ post.createdAt|format_datetime('full', 'none') }}</small>
-                    </div>
-                    <p>{{ post.summary }}</p>
-                    <span class="link-secondary">{{ 'View the entier article'|trans }}</span>
-                </article>
-                  </a>
+                <a href="{{ path('app_post_show', {id: post.id}) }}"
+                   class="w-75 m-auto list-group-item list-group-item-action">
+                    <article class="py-3">
+                        <div class="py-3">
+                            <h3 class="text-primary">{{ post.title }}</h3>
+                            <small class="text-muted">{{ 'Written by'|trans }}
+                                {{ post.createdBy.username }} {{ 'on'|trans }} {{ post.createdAt|format_datetime('full', 'none') }}</small>
+                        </div>
+                        <p>{{ post.summary }}</p>
+                        <span class="link-secondary">{{ 'View the entier article'|trans }}</span>
+                    </article>
+                </a>
             {% else %}
                 <p>{{ 'No posts yet'|trans }}...</p>
             {% endfor %}

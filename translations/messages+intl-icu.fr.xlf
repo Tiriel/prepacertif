@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="fr" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="4tClSWj" resname="Delete">
+        <source>Delete</source>
+        <target>Effacer</target>
+      </trans-unit>
+      <trans-unit id="Xaj3_8K" resname="Back to list">
+        <source>Back to list</source>
+        <target>Retour à la liste</target>
+      </trans-unit>
+      <trans-unit id="1a6ou3H" resname="Written by">
+        <source>Written by</source>
+        <target>Écrit par</target>
+      </trans-unit>
+      <trans-unit id="uNMehSc" resname="on">
+        <source>on</source>
+        <target>le</target>
+      </trans-unit>
+      <trans-unit id="RkxP.QG" resname="Edit">
+        <source>Edit</source>
+        <target>Éditer</target>
+      </trans-unit>
+      <trans-unit id="Oi5cLDS" resname="All posts">
+        <source>All posts</source>
+        <target>Tous les posts</target>
+      </trans-unit>
+      <trans-unit id="8r1ncJX" resname="No posts yet">
+        <source>No posts yet</source>
+        <target>Pas encore de post</target>
+      </trans-unit>
+      <trans-unit id="E48mw5O" resname="PrepaCertif Blog">
+        <source>PrepaCertif Blog</source>
+        <target>PrepaCertif Blog</target>
+      </trans-unit>
+      <trans-unit id="1YUg_VI" resname="My test blog">
+        <source>My test blog</source>
+        <target>Mon blog de test</target>
+      </trans-unit>
+      <trans-unit id="K_2Z3pE" resname="Small description">
+        <source>Small description</source>
+        <target>Petite description</target>
+      </trans-unit>
+      <trans-unit id="pnqCs3a" resname="See all posts">
+        <source>See all posts</source>
+        <target>Voir tous les posts</target>
+      </trans-unit>
+      <trans-unit id="UV8KQw8" resname="Last posts">
+        <source>Last posts</source>
+        <target>Derniers posts</target>
+      </trans-unit>
+      <trans-unit id="yKeA0.P" resname="Log in!">
+        <source>Log in!</source>
+        <target>S'identifier</target>
+      </trans-unit>
+      <trans-unit id="acVpEs4" resname="You are logged in as">
+        <source>You are logged in as</source>
+        <target>Vous êtes identifié en tant que</target>
+      </trans-unit>
+      <trans-unit id="0FJ_Sz1" resname="Logout">
+        <source>Logout</source>
+        <target>Se déconnecter</target>
+      </trans-unit>
+      <trans-unit id="dDUw20Q" resname="Please sign in">
+        <source>Please sign in</source>
+        <target>Veuillez vous connecter</target>
+      </trans-unit>
+      <trans-unit id="47ienTP" resname="Username">
+        <source>Username</source>
+        <target>Nom d'utilisateur</target>
+      </trans-unit>
+      <trans-unit id="588_9PF" resname="Password">
+        <source>Password</source>
+        <target>Mot de passe</target>
+      </trans-unit>
+      <trans-unit id="_TJnqhH" resname="Remember me">
+        <source>Remember me</source>
+        <target>Se souvenir de moi</target>
+      </trans-unit>
+      <trans-unit id="v9QCsvb" resname="Sign in">
+        <source>Sign in</source>
+        <target>S'identifier</target>
+      </trans-unit>
+      <trans-unit id="At9iqIT" resname="View the entire article">
+        <source>View the entire article</source>
+        <target>Voir l'article en entier</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

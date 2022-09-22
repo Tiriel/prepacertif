@@ -1,6 +1,15 @@
+app:
+    path: '/'
+    controller: App\Controller\DefaultController::index
+    defaults:
+        _locale: en
+
 controllers:
     resource: ../src/Controller/
     type: annotation
+    prefix:
+        en: '/en'
+        fr: '/fr'
 
 kernel:
     resource: ../src/Kernel.php
