@@ -1,14 +1,15 @@
 SHELL := /bin/bash
 
-install:
-	symfony composer install
-	yarn install
-.PHONY: install
-
 start:
 	docker-compose up -d
+	symfony serve -d
 	yarn encore dev
 .PHONY: start
+
+deps:
+	symfony composer install
+	yarn install
+.PHONY: deps
 
 db-init:
 	symfony console doctrine:database:drop --force --if-exists
@@ -22,6 +23,9 @@ fixtures:
 
 db: db-init fixtures
 .PHONY: db
+
+install: start deps db
+.PHONY: install
 
 tests:
 	symfony console doctrine:database:drop --force --if-exists -e test
