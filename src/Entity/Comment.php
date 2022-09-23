@@ -5,8 +5,10 @@ namespace App\Entity;
 use App\Repository\CommentRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 #[ORM\Entity(repositoryClass: CommentRepository::class)]
+#[ORM\HasLifecycleCallbacks]
 class Comment
 {
     #[ORM\Id]
@@ -58,11 +60,10 @@ class Comment
         return $this->createdAt;
     }
 
-    public function setCreatedAt(\DateTimeImmutable $createdAt): self
+    #[ORM\PrePersist]
+    public function setCreatedAt(): void
     {
-        $this->createdAt = $createdAt;
-
-        return $this;
+        $this->createdAt = new \DateTimeImmutable();
     }
 
     public function getContent(): ?string
@@ -123,5 +124,19 @@ class Comment
         $this->status = $status;
 
         return $this;
+    }
+
+    public static function createNew(User|UserInterface $user, Post $post): ?self
+    {
+        if (!$user instanceof User) {
+            return null;
+        }
+
+        return (new static)
+            ->setStatus('submitted')
+            ->setCreatedBy($user)
+            ->setPost($post);
+
+
     }
 }

@@ -6,6 +6,8 @@ use App\Entity\Comment;
 use App\Entity\Post;
 use App\Form\CommentType;
 use App\Form\PostType;
+use App\Message\CommentMessage;
+use App\MessageDispatcher\CommentMessageDispatcher;
 use App\Repository\CommentRepository;
 use App\Repository\PostRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -53,18 +55,15 @@ class PostController extends AbstractController
     }
 
     #[Route('/{id}', name: 'app_post_show', methods: ['GET'])]
-    public function show(Post $post, CommentRepository $commentRepository): Response
+    public function show(Request $request, Post $post, CommentRepository $commentRepository, CommentMessageDispatcher $dispatcher): Response
     {
-        $comment = (new Comment())
-            ->setStatus('submitted')
-            ->setCreatedBy($this->getUser())
-            ->setPost($post);
+        $comment = Comment::createNew($this->getUser(), $post);
         $commentForm = $this->createForm(CommentType::class, $comment);
 
         if ($commentForm->isSubmitted()) {
             if ($commentForm->isValid()) {
-                $comment->setCreatedAt(new \DateTimeImmutable());
                 $commentRepository->add($comment, true);
+                $dispatcher->dispatchMessage($request, $comment);
                 $this->addFlash('success', t('app.comment.flash.success'));
 
                 return $this->redirectToRoute('app_post_show', ['id' => $post->getId()]);
