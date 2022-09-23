@@ -33,6 +33,9 @@ class Comment
     #[ORM\ManyToOne(inversedBy: 'comments')]
     private ?User $createdBy = null;
 
+    #[ORM\Column(length: 20)]
+    private ?string $status = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -106,6 +109,18 @@ class Comment
     public function setCreatedBy(?User $createdBy): self
     {
         $this->createdBy = $createdBy;
+
+        return $this;
+    }
+
+    public function getStatus(): ?string
+    {
+        return $this->status;
+    }
+
+    public function setStatus(string $status): self
+    {
+        $this->status = $status;
 
         return $this;
     }

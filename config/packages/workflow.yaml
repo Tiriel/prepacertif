@@ -1,2 +1,70 @@
 framework:
-    workflows: null
+    workflows:
+        comments:
+            type: 'state_machine'
+            audit_trail:
+                enabled: true
+            marking_store:
+                type: 'method'
+                property: 'status'
+            supports:
+                - App\Entity\Comment
+            initial_marking: submitted
+            places:
+                - submitted
+                - spam
+                - potential_spam
+                - ham
+                - rejected
+                - published
+            transitions:
+                accept:
+                    from: submitted
+                    to: ham
+                might_be_spam:
+                    from: submitted
+                    to: potential_spam
+                reject_spam:
+                    from: submitted
+                    to: spam
+                reject:
+                    from: potential_spam
+                    to: rejected
+                reject_ham:
+                    from: ham
+                    to: rejected
+                publish:
+                    from: potential_spam
+                    to: published
+                publish_ham:
+                    from: ham
+                    to: published
+        posts:
+            type: 'state_machine'
+            audit_trail:
+                enabled: true
+            marking_store:
+                type: 'method'
+                property: 'status'
+            supports:
+                - App\Entity\Post
+            initial_marking: draft
+            places:
+                - draft
+                - ready
+                - scheduled
+                - published
+            transitions:
+                validate:
+                    from: draft
+                    to: ready
+                schedule_post:
+                    from: ready
+                    to: scheduled
+                publish_ready:
+                    from: ready
+                    to: published
+                publish_scheduled:
+                    from: scheduled
+                    to: published
+
