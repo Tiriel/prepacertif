@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
+{% form_theme registrationForm 'bootstrap_5_layout.html.twig' %}
 
-{% block title %}Register{% endblock %}
+{% block title %}{{ 'app.form.register'|trans }}{% endblock %}
 
 {% block body %}
     {% for flash_error in app.flashes('verify_email_error') %}
@@ -8,15 +9,25 @@
     {% endfor %}
 
     <div class="w-50 m-auto">
-        <h1>Register</h1>
+        <h1>{{ 'app.form.register'|trans }}</h1>
 
         {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.email, {label: 'Email'|trans}) }}
-        {{ form_row(registrationForm.username, {label: 'Username'|trans}) }}
-        {{ form_row(registrationForm.plainPassword, {label: 'Password'|trans}) }}
-        {{ form_row(registrationForm.agreeTerms, {label: 'I agree to the Terms and conditions'|trans}) }}
+        {{ form_row(registrationForm.email) }}
+        {{ form_row(registrationForm.username) }}
+        {{ form_row(registrationForm.plainPassword) }}
+        <div class="mb-3 row">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-10">
+                <div class="form-check">
+                    {{ form_widget(registrationForm.agreeTerms) }}
+                    <label class="form-check-label required"
+                           for="registration_form_agreeTerms">{{ 'app.form.register.agree'|trans }}<a
+                                href="{{ path('app_static_terms') }}">{{ 'app.terms'|trans }}</a></label>
+                </div>
+            </div>
+        </div>
 
-        <button type="submit" class="btn btn-primary">Register</button>
+        <button type="submit" class="btn btn-primary">{{ 'app.form.register'|trans }}</button>
         {{ form_end(registrationForm) }}
     </div>
 {% endblock %}

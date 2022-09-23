@@ -56,6 +56,7 @@ class PostController extends AbstractController
     public function show(Post $post, CommentRepository $commentRepository): Response
     {
         $comment = (new Comment())
+            ->setStatus('submitted')
             ->setCreatedBy($this->getUser())
             ->setPost($post);
         $commentForm = $this->createForm(CommentType::class, $comment);
@@ -64,11 +65,11 @@ class PostController extends AbstractController
             if ($commentForm->isValid()) {
                 $comment->setCreatedAt(new \DateTimeImmutable());
                 $commentRepository->add($comment, true);
-                $this->addFlash('success', t('Thank you for your comment. It has been submitted and will be reviewed.'));
+                $this->addFlash('success', t('app.comment.flash.success'));
 
                 return $this->redirectToRoute('app_post_show', ['id' => $post->getId()]);
             }
-            $this->addFlash('error', t('There seems to be some problems with your comment.'));
+            $this->addFlash('error', t('app.comment.flash.error'));
         }
 
         return $this->render('post/show.html.twig', [

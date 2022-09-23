@@ -2,19 +2,19 @@
 
 {% form_theme form 'bootstrap_5_layout.html.twig' %}
 
-{% block title %}Edit Post{% endblock %}
+{% block title %}{{ parent() }} - {{ 'app.post.edit'|trans }}{% endblock %}
 
 {% block body %}
     <div class="w-75 m-auto">
-    <h1 class="pb-3">Edit Post</h1>
+    <h1 class="pb-3">{{ 'app.post.edit'|trans }}</h1>
 
-    {{ include('post/_form.html.twig', {'button_label': 'Update'}) }}
+    {{ include('post/_form.html.twig', {'button_label': 'app.button.update'|trans}) }}
     <div class="float-end me-2">
         {{ include('post/_delete_form.html.twig') }}
     </div>
 
     <a href="{{ path('app_post_index') }}">
-        <button class="btn btn-primary">{{ 'Back to list'|trans }}</button>
+        <button class="btn btn-primary">{{ 'app.back_to_list'|trans }}</button>
     </a>
     </div>
 {% endblock %}

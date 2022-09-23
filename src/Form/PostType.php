@@ -18,15 +18,15 @@ class PostType extends AbstractType
     {
         $builder
             ->add('title', TextType::class, [
-                'label' => t('Post Title'),
+                'label' => t('app.form.post.title'),
             ])
             ->add('text', CKEditorType::class, [
-                'label' => t('Content'),
+                'label' => t('app.form.post.content'),
             ])
             ->add('publicationDate', DateType::class, [
                 'input' => 'datetime_immutable',
                 'widget' => 'single_text',
-                'label' => t('Publication date')
+                'label' => t('app.form.post.publication_date')
             ]);
 
         if (array_key_exists('edit', $options) && $options['edit'] === true) {

@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ 'Log in!'|trans }}{% endblock %}
+{% block title %}{{ parent() }} - {{ 'app.form.login.sign_in'|trans }}{% endblock %}
 
 {% block body %}
     <form method="post" class="w-50 m-auto">
@@ -10,15 +10,15 @@
 
         {% if app.user %}
             <div class="mb-3">
-                {{ 'You are logged in as'|trans }} {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">{{ 'Logout'|trans }}</a>
+                {{ 'app.form.login.already_logged'|trans }} {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">{{ 'app.logout'|trans }}</a>
             </div>
         {% endif %}
 
-        <h1 class="h3 mb-3 font-weight-normal">{{ 'Please sign in'|trans }}</h1>
-        <label for="inputUsername">{{ 'Username'|trans }}</label>
+        <h1 class="h3 mb-3 font-weight-normal">{{ 'app.form.login.sign_in'|trans }}</h1>
+        <label for="inputUsername">{{ 'app.form.username'|trans }}</label>
         <input type="text" value="{{ last_username }}" name="username" id="inputUsername" class="form-control"
                autocomplete="username" required autofocus>
-        <label for="inputPassword">{{ 'Password'|trans }}</label>
+        <label for="inputPassword">{{ 'app.form.password'|trans }}</label>
         <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password"
                required>
 
@@ -28,12 +28,12 @@
 
         <div class="checkbox mb-3">
             <label>
-                <input type="checkbox" name="_remember_me"> {{ 'Remember me'|trans }}
+                <input type="checkbox" name="_remember_me"> {{ 'app.form.login.remember_me'|trans }}
             </label>
         </div>
 
         <button class="btn btn-lg btn-primary mt-3" type="submit">
-            {{ 'Sign in'|trans }}
+            {{ 'app.form.login.button.sign_in'|trans }}
         </button>
     </form>
 {% endblock %}

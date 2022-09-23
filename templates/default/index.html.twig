@@ -1,24 +1,23 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello DefaultController!{% endblock %}
 {% block header %}
     <section class="mb-5 p-5 bg-light">
         <div class="w-75 mx-auto">
-            <h1 class="display-1 lh-1">{{ 'PrepaCertif Blog'|trans }}</h1>
-            <small class="text-muted fs-4">{{ 'My test blog'|trans }}</small>
+            <h1 class="display-1 lh-1">{{ 'app.blog_title'|trans }}</h1>
+            <small class="text-muted fs-4">{{ 'app.blog_subtitle'|trans }}</small>
         </div>
     </section>
     <article class="w-50 mx-auto mt-5">
         <p class="lead">
-            {{ 'Small description'|trans }}
+            {{ 'app.blog_description'|trans }}
         </p>
     </article>
 {% endblock %}
 
 {% block body %}
     <section>
-        <a class="link-secondary float-end" href="{{ path('app_post_index') }}">{{ 'See all posts'|trans }}</a>
-        <h3 class="w-75 m-auto">{{ 'Last posts'|trans }} :</h3>
+        <a class="link-secondary float-end" href="{{ path('app_post_index') }}">{{ 'app.post.list_link'|trans }}</a>
+        <h3 class="w-75 m-auto">{{ 'app.posts.last'|trans }} :</h3>
         <div class="list-group list-group-flush">
             {% for post in posts %}
                 <a href="{{ path('app_post_show', {id: post.id}) }}"
@@ -26,15 +25,15 @@
                     <article class="py-3">
                         <div class="py-3">
                             <h3 class="text-primary">{{ post.title }}</h3>
-                            <small class="text-muted">{{ 'Written by'|trans }}
-                                {{ post.createdBy.username }} {{ 'on'|trans }} {{ post.createdAt|format_datetime('full', 'none') }}</small>
+                            <small class="text-muted">{{ 'app.post.written_by'|trans }}
+                                {{ post.createdBy.username }} {{ 'app.post.publication_date.on'|trans }} {{ post.createdAt|format_datetime('full', 'none') }}</small>
                         </div>
                         <p>{{ post.summary }}</p>
-                        <span class="link-secondary">{{ 'View the entire article'|trans }}</span>
+                        <span class="link-secondary">{{ 'app.post.view_full_link'|trans }}</span>
                     </article>
                 </a>
             {% else %}
-                <p>{{ 'No posts yet'|trans }}...</p>
+                <p>{{ 'app.post.empty'|trans }}</p>
             {% endfor %}
         </div>
     </section>
